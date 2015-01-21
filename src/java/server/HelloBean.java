@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package server;
 
 import javax.ejb.Stateless;
@@ -14,12 +10,41 @@ import javax.ejb.Stateless;
 @Stateless
 public class HelloBean {
 
+    private String uname;
+    private String password;
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     public String sayHello(String name) {
         return "Hello" + name;
     }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
     
-    
+    public String checkLogin(String uname, String password)
+    {
+        this.uname = uname;
+        this.password = password;
+        
+        if(uname.equals("admin")&&password.equals("reset"))
+        {
+            return "Valid User...!!";
+        }
+        else
+        {
+            return "Invalid User";
+        }
+    }
 }
